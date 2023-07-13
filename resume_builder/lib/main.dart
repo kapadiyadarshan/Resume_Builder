@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // useMaterial3: true,
-        colorSchemeSeed: theme1,
+        // colorSchemeSeed: theme1,
       ),
       initialRoute: MyRoutes.SplashScreen,
       routes: {

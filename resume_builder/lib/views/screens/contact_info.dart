@@ -14,6 +14,9 @@ class _ContactInfoState extends State<ContactInfo> {
   int currentIndex = 0;
 
   TextEditingController nameController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -24,7 +27,7 @@ class _ContactInfoState extends State<ContactInfo> {
         title: const Text("Contact Info"),
         centerTitle: true,
         leading: const MyBackButton(),
-        // backgroundColor: theme1,
+        backgroundColor: theme1,
         foregroundColor: theme2,
       ),
       resizeToAvoidBottomInset: false,
@@ -123,7 +126,7 @@ class _ContactInfoState extends State<ContactInfo> {
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
-                        blurRadius: 20,
+                        blurRadius: 10,
                         offset: Offset(5, 5)
                       )
                     ]
@@ -147,19 +150,28 @@ class _ContactInfoState extends State<ContactInfo> {
                                 }
                             },
                             showCursor: true,
+                            cursorColor: theme1,
                             // maxLines: 7,
                             // minLines: 2,
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                               isDense: true,
                               labelText: "Name",
+                              labelStyle: TextStyle(
+                                color: theme1
+                              ),
                               hintText: "Enter Full Name",
                               prefixIcon: const Icon(
                                 Icons.person,
                               ),
+                              prefixIconColor: theme1,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30)
-                              )
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              focusColor: theme1,
                             )
                           ),
                           const SizedBox(
@@ -167,17 +179,36 @@ class _ContactInfoState extends State<ContactInfo> {
                           ),
                           //Address
                           TextFormField(
+                            controller: addressController,
+                            validator: (value){
+                              if(value!.isEmpty)
+                                {
+                                  return "Please enter email...";
+                                }
+                              else
+                                {
+                                  return null;
+                                }
+                            },
                             keyboardType: TextInputType.streetAddress,
                               decoration: InputDecoration(
                                 isDense: true,
                                   labelText: "Address",
+                                  labelStyle: TextStyle(
+                                    color: theme1,
+                                  ),
                                   hintText: "Enter Address",
                                   prefixIcon: const Icon(
                                       Icons.location_on_rounded
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)
-                                  )
+                                  ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30)
+                                ),
+                                focusColor: theme1
                               )
                           ),
                           const SizedBox(
@@ -185,17 +216,36 @@ class _ContactInfoState extends State<ContactInfo> {
                           ),
                           //Email
                           TextFormField(
+                            controller: emailController,
+                            validator: (value){
+                              if(value!.isEmpty)
+                                {
+                                  return "Please enter email id...";
+                                }
+                              else
+                                {
+                                  return null;
+                                }
+                            },
                             keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                 isDense: true,
                                   labelText: "Email",
+                                  labelStyle: TextStyle(
+                                    color: theme1,
+                                  ),
                                   hintText: "Enter Email",
                                   prefixIcon: const Icon(
                                       Icons.email_rounded
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)
-                                  )
+                                  ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                focusColor: theme1,
                               )
                           ),
                           const SizedBox(
@@ -203,18 +253,37 @@ class _ContactInfoState extends State<ContactInfo> {
                           ),
                           //Phone
                           TextFormField(
+                            controller: phoneController,
+                            validator: (value){
+                              if(value!.isEmpty)
+                                {
+                                  return "Please enter phone number...";
+                                }
+                              else
+                                {
+                                  return null;
+                                }
+                            },
                             keyboardType: TextInputType.phone,
                               decoration: InputDecoration(
                                 isDense: true,
                                   labelText: "Phone",
+                                  labelStyle: TextStyle(
+                                    color: theme1
+                                  ),
                                   hintText: "Enter Phone Number",
                                   prefixIcon: const Icon(
                                       Icons.phone
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)
-                                  )
-                              )
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  focusColor: theme1,
+                              ),
                           ),
                           const SizedBox(
                             height: 12,
@@ -225,13 +294,21 @@ class _ContactInfoState extends State<ContactInfo> {
                               decoration: InputDecoration(
                                   isDense: true,
                                   labelText: "Date of Birth (optional)",
+                                  labelStyle: TextStyle(
+                                    color: theme1
+                                  ),
                                   hintText: "Enter Date of Birth",
                                   prefixIcon: const Icon(
                                       Icons.date_range
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)
-                                  )
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                  ),
+                                  focusColor: theme1
                               )
                           ),
                           const SizedBox(
@@ -261,13 +338,20 @@ class _ContactInfoState extends State<ContactInfo> {
                               decoration: InputDecoration(
                                   isDense: true,
                                   labelText: "LinkedIn (optional)",
+                                  labelStyle: TextStyle(
+                                    color: theme1,
+                                  ),
                                   hintText: "Enter Linkedin",
                                   prefixIcon: const Icon(
                                       Icons.dataset_linked_sharp
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30)
-                                  )
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30)
+                                  ),
                               )
                           ),
                           const SizedBox(
@@ -282,6 +366,10 @@ class _ContactInfoState extends State<ContactInfo> {
                                       nameController.clear();
                                     });
                                   },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: theme1,
+                                    foregroundColor: theme2,
+                                  ),
                                   icon: const Icon(Icons.clear),
                                   label: const Text("Clear")
                               ),
@@ -289,7 +377,11 @@ class _ContactInfoState extends State<ContactInfo> {
                                   onPressed: () {
                                     bool validated = formKey.currentState!.validate();
                                   },
-                                  icon: const Icon(Icons.done_outline_rounded),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: theme1,
+                                    foregroundColor: theme2,
+                                  ),
+                                  icon: const Icon(Icons.done),
                                   label: const Text("Submit")
                               ),
                             ],

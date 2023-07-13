@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/utils/routes_utils.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,11 +16,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Home Page"),
         centerTitle: true,
+        backgroundColor: theme1,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed(MyRoutes.ResumeWorkSpace);
         },
+        backgroundColor: theme1,
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
