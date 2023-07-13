@@ -13,6 +13,10 @@ class _ContactInfoState extends State<ContactInfo> {
 
   int currentIndex = 0;
 
+  TextEditingController nameController = TextEditingController();
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,139 +128,174 @@ class _ContactInfoState extends State<ContactInfo> {
                       )
                     ]
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        //Name
-                        TextFormField(
-                          showCursor: true,
-                          // maxLines: 7,
-                          // minLines: 2,
-                          keyboardType: TextInputType.name,
-                          decoration: InputDecoration(
-                            isDense: true,
-                            labelText: "Name",
-                            hintText: "Enter Full Name",
-                            prefixIcon: const Icon(
-                              Icons.person,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30)
+                  child: Form(
+                    key: formKey,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          //Name
+                          TextFormField(
+                            controller: nameController,
+                            validator: (value){
+                              if(value!.isEmpty)
+                                {
+                                  return "Please enter name...";
+                                }
+                              else
+                                {
+                                  return null;
+                                }
+                            },
+                            showCursor: true,
+                            // maxLines: 7,
+                            // minLines: 2,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              labelText: "Name",
+                              hintText: "Enter Full Name",
+                              prefixIcon: const Icon(
+                                Icons.person,
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30)
+                              )
                             )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //Address
+                          TextFormField(
+                            keyboardType: TextInputType.streetAddress,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                  labelText: "Address",
+                                  hintText: "Enter Address",
+                                  prefixIcon: const Icon(
+                                      Icons.location_on_rounded
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //Email
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                  labelText: "Email",
+                                  hintText: "Enter Email",
+                                  prefixIcon: const Icon(
+                                      Icons.email_rounded
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //Phone
+                          TextFormField(
+                            keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                  labelText: "Phone",
+                                  hintText: "Enter Phone Number",
+                                  prefixIcon: const Icon(
+                                      Icons.phone
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //Date of Birth
+                          TextFormField(
+                            keyboardType: TextInputType.datetime,
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  labelText: "Date of Birth (optional)",
+                                  hintText: "Enter Date of Birth",
+                                  prefixIcon: const Icon(
+                                      Icons.date_range
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //Website
+                          TextFormField(
+                            keyboardType: TextInputType.url,
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  labelText: "Website (optional)",
+                                  hintText: "Enter Website",
+                                  prefixIcon: const Icon(
+                                      Icons.web
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          //LinkedIn
+                          TextFormField(
+                            keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  labelText: "LinkedIn (optional)",
+                                  hintText: "Enter Linkedin",
+                                  prefixIcon: const Icon(
+                                      Icons.dataset_linked_sharp
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30)
+                                  )
+                              )
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ElevatedButton.icon(
+                                  onPressed: () {
+                                    setState(() {
+                                      nameController.clear();
+                                    });
+                                  },
+                                  icon: const Icon(Icons.clear),
+                                  label: const Text("Clear")
+                              ),
+                              ElevatedButton.icon(
+                                  onPressed: () {
+                                    bool validated = formKey.currentState!.validate();
+                                  },
+                                  icon: const Icon(Icons.done_outline_rounded),
+                                  label: const Text("Submit")
+                              ),
+                            ],
                           )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //Address
-                        TextFormField(
-                          keyboardType: TextInputType.streetAddress,
-                            decoration: InputDecoration(
-                              isDense: true,
-                                labelText: "Address",
-                                hintText: "Enter Address",
-                                prefixIcon: const Icon(
-                                    Icons.location_on_rounded
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //Email
-                        TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              isDense: true,
-                                labelText: "Email",
-                                hintText: "Enter Email",
-                                prefixIcon: const Icon(
-                                    Icons.email_rounded
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //Phone
-                        TextFormField(
-                          keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              isDense: true,
-                                labelText: "Phone",
-                                hintText: "Enter Phone Number",
-                                prefixIcon: const Icon(
-                                    Icons.phone
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //Date of Birth
-                        TextFormField(
-                          keyboardType: TextInputType.datetime,
-                            decoration: InputDecoration(
-                                isDense: true,
-                                labelText: "Date of Birth (optional)",
-                                hintText: "Enter Date of Birth",
-                                prefixIcon: const Icon(
-                                    Icons.date_range
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //Website
-                        TextFormField(
-                          keyboardType: TextInputType.url,
-                            decoration: InputDecoration(
-                                isDense: true,
-                                labelText: "Website (optional)",
-                                hintText: "Enter Website",
-                                prefixIcon: const Icon(
-                                    Icons.web
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        //LinkedIn
-                        TextFormField(
-                          keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                                isDense: true,
-                                labelText: "LinkedIn (optional)",
-                                hintText: "Enter Linkedin",
-                                prefixIcon: const Icon(
-                                    Icons.dataset_linked_sharp
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
-                                )
-                            )
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
