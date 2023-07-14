@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
 class Education extends StatefulWidget {
@@ -16,6 +17,8 @@ class _EducationState extends State<Education> {
         title: const Text("Education"),
         centerTitle: true,
         leading: const MyBackButton(),
+        backgroundColor: theme1,
+        foregroundColor: theme2,
       ),
     );
   }

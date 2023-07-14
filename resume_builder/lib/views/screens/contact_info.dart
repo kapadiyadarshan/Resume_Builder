@@ -122,7 +122,7 @@ class _ContactInfoState extends State<ContactInfo> {
                   padding: EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: theme2,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(10),
                     boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
@@ -166,17 +166,21 @@ class _ContactInfoState extends State<ContactInfo> {
                               ),
                               prefixIconColor: theme1,
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30)
+                                borderRadius: BorderRadius.circular(10)
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: theme1,
+                                    width: 2,
+                                  )
                               ),
-                              focusColor: theme1,
                             )
                           ),
                           const SizedBox(
                             height: 12,
                           ),
+
                           //Address
                           TextFormField(
                             controller: addressController,
@@ -203,17 +207,21 @@ class _ContactInfoState extends State<ContactInfo> {
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
                                   ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30)
+                                  borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: theme1,
+                                      width: 2,
+                                    )
                                 ),
-                                focusColor: theme1
                               )
                           ),
                           const SizedBox(
                             height: 12,
                           ),
+
                           //Email
                           TextFormField(
                             controller: emailController,
@@ -240,10 +248,14 @@ class _ContactInfoState extends State<ContactInfo> {
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
                                   ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                                  borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: theme1,
+                                      width: 2,
+                                    )
                                 ),
                                 focusColor: theme1,
                               )
@@ -251,6 +263,7 @@ class _ContactInfoState extends State<ContactInfo> {
                           const SizedBox(
                             height: 12,
                           ),
+
                           //Phone
                           TextFormField(
                             controller: phoneController,
@@ -277,10 +290,14 @@ class _ContactInfoState extends State<ContactInfo> {
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30),
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
                                   ),
                                   focusColor: theme1,
                               ),
@@ -303,12 +320,15 @@ class _ContactInfoState extends State<ContactInfo> {
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
                                   ),
-                                  focusColor: theme1
                               )
                           ),
                           const SizedBox(
@@ -320,12 +340,23 @@ class _ContactInfoState extends State<ContactInfo> {
                               decoration: InputDecoration(
                                   isDense: true,
                                   labelText: "Website (optional)",
+                                  labelStyle: TextStyle(
+                                    color: theme1
+                                  ),
                                   hintText: "Enter Website",
                                   prefixIcon: const Icon(
                                       Icons.web
                                   ),
+                                  prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
                                   )
                               )
                           ),
@@ -347,10 +378,14 @@ class _ContactInfoState extends State<ContactInfo> {
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30)
+                                      borderRadius: BorderRadius.circular(10)
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(30)
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
                                   ),
                               )
                           ),

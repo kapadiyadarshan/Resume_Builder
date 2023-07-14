@@ -18,6 +18,32 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: theme1,
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("assets/icons/box.png",
+            scale: 3,),
+            const SizedBox(
+              height: 24,
+            ),
+            const Text(
+              "No Resumes\n",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500
+              ),
+            ),
+          const Text(
+            "Press + Create New Resume\n",
+            style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w500
+            ),
+          ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed(MyRoutes.ResumeWorkSpace);

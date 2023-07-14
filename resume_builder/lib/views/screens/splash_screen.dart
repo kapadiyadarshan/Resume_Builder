@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/utils/routes_utils.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   ChangePage()
   {
-    Timer.periodic(Duration(seconds: 3), (timer) {
+    Timer.periodic(Duration(seconds: 4), (timer) {
       Navigator.of(context).pushReplacementNamed(MyRoutes.HomePage);
       timer.cancel();
     });
@@ -35,19 +36,27 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Spacer(),
-            Image.asset("assets/images/Resume.gif",
-            scale: 1.3,
+            const Spacer(
+              flex: 2,
             ),
-            const SizedBox(
-              height: 24,
+            Image.asset("assets/images/Resume (1).gif",
+            scale: 1.3,
             ),
             Text("Resume Builder",
             style: TextStyle(
               color: theme1,
-              fontSize: 30,
+              fontSize: 36,
               fontWeight: FontWeight.bold,
             ),),
+            const SizedBox(
+              height: 36,
+            ),
+            SpinKitWaveSpinner(
+              color: theme1,
+              size: 64,
+              waveColor: theme1,
+              trackColor: Colors.grey.shade100,
+            ),
             const Spacer(),
           ],
         ),
