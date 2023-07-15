@@ -29,7 +29,7 @@ class MyRoutes {
     {
       "name" : "experiences",
       "title" : "Experiences",
-      "icon" : "${IconPath}experiences.png",
+      "icon" : "${IconPath}experience.png",
     },
     {
       "name" : "technical_skills",
@@ -39,7 +39,7 @@ class MyRoutes {
     {
       "name" : "interest_hobbies",
       "title" : "Interest/Hobbies",
-      "icon" : "${IconPath}interest_hobbies (2).png",
+      "icon" : "${IconPath}interest_hobbies.png",
     },
     {
       "name" : "projects",
@@ -49,7 +49,7 @@ class MyRoutes {
     {
       "name" : "achivements",
       "title" : "Achievements",
-      "icon" : "${IconPath}achievements.png",
+      "icon" : "${IconPath}achivements.png",
     },
     {
       "name" : "references",

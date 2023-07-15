@@ -35,6 +35,7 @@ class _ContactInfoState extends State<ContactInfo> {
         padding: EdgeInsets.all(12),
         child: Column(
           children: [
+            // Contact and photo Buttons
             SizedBox(
               height: 40,
               child: Row(
@@ -119,7 +120,7 @@ class _ContactInfoState extends State<ContactInfo> {
               children: [
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: theme2,
                     borderRadius: BorderRadius.circular(10),
@@ -133,6 +134,7 @@ class _ContactInfoState extends State<ContactInfo> {
                   ),
                   child: Form(
                     key: formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
@@ -187,7 +189,7 @@ class _ContactInfoState extends State<ContactInfo> {
                             validator: (value){
                               if(value!.isEmpty)
                                 {
-                                  return "Please enter email...";
+                                  return "Please enter address...";
                                 }
                               else
                                 {
@@ -344,8 +346,8 @@ class _ContactInfoState extends State<ContactInfo> {
                                     color: theme1
                                   ),
                                   hintText: "Enter Website",
-                                  prefixIcon: const Icon(
-                                      Icons.web
+                                  prefixIcon: Image.asset("assets/icons/website.png",
+                                    scale: 2.5,
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(
@@ -373,8 +375,8 @@ class _ContactInfoState extends State<ContactInfo> {
                                     color: theme1,
                                   ),
                                   hintText: "Enter Linkedin",
-                                  prefixIcon: const Icon(
-                                      Icons.dataset_linked_sharp
+                                  prefixIcon: Image.asset("assets/icons/linkdeIn.png",
+                                  scale: 2.5,
                                   ),
                                   prefixIconColor: theme1,
                                   border: OutlineInputBorder(

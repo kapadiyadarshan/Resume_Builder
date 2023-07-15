@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/utils/routes_utils.dart';
@@ -42,12 +43,17 @@ class _SplashScreenState extends State<SplashScreen> {
             Image.asset("assets/images/Resume (1).gif",
             scale: 1.3,
             ),
-            Text("Resume Builder",
-            style: TextStyle(
-              color: theme1,
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-            ),),
+            TextLiquidFill(
+              loadDuration: const Duration(seconds: 2),
+              text: 'Resume Builder',
+              waveColor: theme1,
+              boxBackgroundColor: theme2,
+              textStyle: const TextStyle(
+                fontSize: 44.0,
+                fontWeight: FontWeight.bold,
+              ),
+              boxHeight: 90.0,
+            ),
             const SizedBox(
               height: 36,
             ),

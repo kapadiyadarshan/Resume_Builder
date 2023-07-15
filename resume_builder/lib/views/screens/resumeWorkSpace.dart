@@ -36,15 +36,17 @@ class _ResumeWorkSpaceState extends State<ResumeWorkSpace> {
                     child: Row(
                       children: [
                         Image.asset(element["icon"],
-                          height: 32,
+                          height: 36,
                         ),
                         const SizedBox(
                           width: 20,
                         ),
                         Text(
                             element["title"],
-                          style: const TextStyle(
-                            fontSize: 16
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: theme1,
                           ),
                         ),
                         const Spacer(),
@@ -52,7 +54,10 @@ class _ResumeWorkSpaceState extends State<ResumeWorkSpace> {
                             onPressed: () {
                               Navigator.of(context).pushNamed(element["name"]);
                             },
-                            icon: const Icon(Icons.arrow_forward_ios_sharp)
+                            icon: Icon(
+                                Icons.arrow_forward_ios_sharp,
+                              color: theme1,
+                            )
                         )
                       ],
                     ),
