@@ -307,6 +307,7 @@ class _ContactInfoState extends State<ContactInfo> {
                           const SizedBox(
                             height: 12,
                           ),
+
                           //Date of Birth
                           TextFormField(
                             keyboardType: TextInputType.datetime,
@@ -331,7 +332,7 @@ class _ContactInfoState extends State<ContactInfo> {
                                         width: 2,
                                       )
                                   ),
-                              )
+                              ),
                           ),
                           const SizedBox(
                             height: 12,
