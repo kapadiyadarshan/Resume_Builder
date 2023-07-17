@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
+import '../../Global/global_class.dart';
+
 class ContactInfo extends StatefulWidget {
   const ContactInfo({Key? key}) : super(key: key);
 
@@ -13,428 +15,511 @@ class _ContactInfoState extends State<ContactInfo> {
 
   int currentIndex = 0;
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController date = TextEditingController();
+  TextEditingController name = TextEditingController();
+
+  RegExp emailRx = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Contact Info"),
-        centerTitle: true,
-        leading: const MyBackButton(),
-        backgroundColor: theme1,
-        foregroundColor: theme2,
-      ),
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: EdgeInsets.all(12),
-        child: Column(
-          children: [
-            // Contact and photo Buttons
-            SizedBox(
-              height: 40,
-              child: Row(
-                children: [
-                  //Contact
-                  Expanded(
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(30),
-                      onTap: () {
-                        setState(() {
-                          currentIndex = 0;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: (currentIndex == 0) ? theme1 : Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: (currentIndex == 0)
-                              ? [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: theme1
-                          )
-                          ] : null,
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Contact",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: (currentIndex == 0) ? FontWeight.bold : null,
-                            color: (currentIndex == 0) ? theme2 : Colors.black,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 12,
-                  ),
-                  //Photo
-                  Expanded(
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(30),
-                      onTap: () {
-                        setState(() {
-                          currentIndex = 1;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: (currentIndex == 1) ? theme1 : Colors.grey.shade100,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: (currentIndex == 1)
-                              ? [
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus!.unfocus();
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Contact Info"),
+          centerTitle: true,
+          leading: const MyBackButton(),
+          backgroundColor: theme1,
+          foregroundColor: theme2,
+        ),
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            children: [
+              // Contact and photo Buttons
+              SizedBox(
+                height: 40,
+                child: Row(
+                  children: [
+                    //Contact
+                    Expanded(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(30),
+                        onTap: () {
+                          setState(() {
+                            currentIndex = 0;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: (currentIndex == 0) ? theme1 : Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: (currentIndex == 0)
+                                ? [
                             BoxShadow(
                                 blurRadius: 10,
                                 color: theme1
                             )
-                          ] : null,
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Photo",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: (currentIndex == 1) ? FontWeight.bold : null,
-                            color: (currentIndex == 1) ? theme2 : Colors.black,
+                            ] : null,
                           ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Contact",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: (currentIndex == 0) ? FontWeight.bold : null,
+                              color: (currentIndex == 0) ? theme2 : Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    //Photo
+                    Expanded(
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(30),
+                        onTap: () {
+                          setState(() {
+                            currentIndex = 1;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: (currentIndex == 1) ? theme1 : Colors.grey.shade100,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: (currentIndex == 1)
+                                ? [
+                              BoxShadow(
+                                  blurRadius: 10,
+                                  color: theme1
+                              )
+                            ] : null,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Photo",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: (currentIndex == 1) ? FontWeight.bold : null,
+                              color: (currentIndex == 1) ? theme2 : Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              IndexedStack(
+                index: currentIndex,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: theme2,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 10,
+                          offset: Offset(5, 5)
+                        )
+                      ]
+                    ),
+                    child: Form(
+                      key: formKey,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            //Name
+                            TextFormField(
+                              controller: name,
+                              validator: (value){
+                                if(value!.isEmpty)
+                                  {
+                                    return "Please enter name...";
+                                  }
+                                else
+                                  {
+                                    return null;
+                                  }
+                              },
+                              showCursor: true,
+                              cursorColor: theme1,
+                              // maxLines: 7,
+                              // minLines: 2,
+                              keyboardType: TextInputType.name,
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                isDense: true,
+                                labelText: "Name",
+                                labelStyle: TextStyle(
+                                  color: theme1
+                                ),
+                                hintText: "Enter Full Name",
+                                prefixIcon: const Icon(
+                                  Icons.person,
+                                ),
+                                prefixIconColor: theme1,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(
+                                      color: theme1,
+                                      width: 2,
+                                    )
+                                ),
+                              ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.name = value;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //Address
+                            TextFormField(
+                              // controller: addressController,
+                              validator: (value){
+                                if(value!.isEmpty)
+                                  {
+                                    return "Please enter address...";
+                                  }
+                                else
+                                  {
+                                    return null;
+                                  }
+                              },
+                                keyboardType: TextInputType.streetAddress,
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                    labelText: "Address",
+                                    labelStyle: TextStyle(
+                                      color: theme1,
+                                    ),
+                                    hintText: "Enter Address",
+                                    prefixIcon: const Icon(
+                                        Icons.location_on_rounded
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
+                                  ),
+                                ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.address = value;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //Email
+                            TextFormField(
+                              // controller: emailController,
+                              validator: (value){
+                                if(value!.isEmpty)
+                                  {
+                                    return "Please enter email id...";
+                                  }
+                                else if(!emailRx.hasMatch(value))
+                                  {
+                                    return "Please enter valid email...";
+                                  }
+                                else
+                                  {
+                                    return null;
+                                  }
+                              },
+                                keyboardType: TextInputType.emailAddress,
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                    labelText: "Email",
+                                    labelStyle: TextStyle(
+                                      color: theme1,
+                                    ),
+                                    hintText: "Enter Email",
+                                    prefixIcon: const Icon(
+                                        Icons.email_rounded
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(
+                                        color: theme1,
+                                        width: 2,
+                                      )
+                                  ),
+                                ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.email = value;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //Phone
+                            TextFormField(
+                              // controller: phoneController,
+                              validator: (value){
+                                if(value!.isEmpty)
+                                  {
+                                    return "Please enter phone number...";
+                                  }
+                                else if(value.length < 10)
+                                  {
+                                    return "Phone Number Must Be Of 10 Digits...";
+                                  }
+                                else if(value.length > 10)
+                                  {
+                                    return "Phone Number Must Be Of 10 Digits...";
+                                  }
+                                else
+                                  {
+                                    return null;
+                                  }
+                              },
+                              keyboardType: TextInputType.phone,
+                              textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                    labelText: "Phone",
+                                    labelStyle: TextStyle(
+                                      color: theme1
+                                    ),
+                                    hintText: "Enter Phone Number",
+                                    prefixIcon: const Icon(
+                                        Icons.phone
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: theme1,
+                                          width: 2,
+                                        )
+                                    ),
+                                    focusColor: theme1,
+                                ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.phone = int.parse(value);
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //Date of Birth
+                            TextFormField(
+                              controller: date,
+                              // keyboardType: TextInputType.datetime,
+                              textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: "Date of Birth (optional)",
+                                    labelStyle: TextStyle(
+                                      color: theme1
+                                    ),
+                                    // label: Text("${Global.DOB}"),
+                                    hintText: "Enter Date of Birth",
+                                    prefixIcon: const Icon(
+                                        Icons.date_range
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: theme1,
+                                          width: 2,
+                                        )
+                                    ),
+                                ),
+                              onTap: () async {
+                                setState(() async {
+                                  DateTime? pickDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime(1947),
+                                      lastDate: DateTime.now(),
+                                  ).then((value){
+                                    setState(() {
+                                      Global.DOB = "${value?.day}-${value?.month}-${value?.year}".toString();
+                                      date.text = "${value?.day}-${value?.month}-${value?.year}".toString();
+                                    });
+                                  });
+                                });
+                              },
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.DOB = value;
+                                  debugPrint(Global.DOB);
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //Website
+                            TextFormField(
+                                keyboardType: TextInputType.url,
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: "Website (optional)",
+                                    labelStyle: TextStyle(
+                                      color: theme1
+                                    ),
+                                    hintText: "Enter Website",
+                                    prefixIcon: Image.asset("assets/icons/website.png",
+                                      scale: 2.5,
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: theme1,
+                                          width: 2,
+                                        )
+                                    )
+                                ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.website = value;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            //LinkedIn
+                            TextFormField(
+                                keyboardType: TextInputType.name,
+                                textInputAction: TextInputAction.done,
+                                decoration: InputDecoration(
+                                    isDense: true,
+                                    labelText: "LinkedIn (optional)",
+                                    labelStyle: TextStyle(
+                                      color: theme1,
+                                    ),
+                                    hintText: "Enter Linkedin",
+                                    prefixIcon: Image.asset("assets/icons/linkdeIn.png",
+                                    scale: 2.5,
+                                    ),
+                                    prefixIconColor: theme1,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                        borderSide: BorderSide(
+                                          color: theme1,
+                                          width: 2,
+                                        )
+                                    ),
+                                ),
+                              onChanged: (value) {
+                                setState(() {
+                                  Global.linkedIn = value;
+                                });
+                              },
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                //Clear Button
+                                ElevatedButton.icon(
+                                    onPressed: () {
+                                      setState(() {
+
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: theme1,
+                                      foregroundColor: theme2,
+                                    ),
+                                    icon: const Icon(Icons.clear),
+                                    label: const Text("Clear")
+                                ),
+
+                                //Submit Button
+                                ElevatedButton.icon(
+                                    onPressed: () {
+                                      bool validated = formKey.currentState!.validate();
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: theme1,
+                                      foregroundColor: theme2,
+                                    ),
+                                    icon: const Icon(Icons.done),
+                                    label: const Text("Submit")
+                                ),
+                              ],
+                            ),
+                            Text("${Global.DOB}")
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ],
-              ),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            IndexedStack(
-              index: currentIndex,
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: theme2,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset: Offset(5, 5)
-                      )
-                    ]
-                  ),
-                  child: Form(
-                    key: formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          //Name
-                          TextFormField(
-                            controller: nameController,
-                            validator: (value){
-                              if(value!.isEmpty)
-                                {
-                                  return "Please enter name...";
-                                }
-                              else
-                                {
-                                  return null;
-                                }
-                            },
-                            showCursor: true,
-                            cursorColor: theme1,
-                            // maxLines: 7,
-                            // minLines: 2,
-                            keyboardType: TextInputType.name,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              labelText: "Name",
-                              labelStyle: TextStyle(
-                                color: theme1
-                              ),
-                              hintText: "Enter Full Name",
-                              prefixIcon: const Icon(
-                                Icons.person,
-                              ),
-                              prefixIconColor: theme1,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10)
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                    color: theme1,
-                                    width: 2,
-                                  )
-                              ),
-                            )
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-
-                          //Address
-                          TextFormField(
-                            controller: addressController,
-                            validator: (value){
-                              if(value!.isEmpty)
-                                {
-                                  return "Please enter address...";
-                                }
-                              else
-                                {
-                                  return null;
-                                }
-                            },
-                            keyboardType: TextInputType.streetAddress,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                  labelText: "Address",
-                                  labelStyle: TextStyle(
-                                    color: theme1,
-                                  ),
-                                  hintText: "Enter Address",
-                                  prefixIcon: const Icon(
-                                      Icons.location_on_rounded
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: theme1,
-                                      width: 2,
-                                    )
-                                ),
-                              )
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-
-                          //Email
-                          TextFormField(
-                            controller: emailController,
-                            validator: (value){
-                              if(value!.isEmpty)
-                                {
-                                  return "Please enter email id...";
-                                }
-                              else
-                                {
-                                  return null;
-                                }
-                            },
-                            keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                  labelText: "Email",
-                                  labelStyle: TextStyle(
-                                    color: theme1,
-                                  ),
-                                  hintText: "Enter Email",
-                                  prefixIcon: const Icon(
-                                      Icons.email_rounded
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                      color: theme1,
-                                      width: 2,
-                                    )
-                                ),
-                                focusColor: theme1,
-                              )
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-
-                          //Phone
-                          TextFormField(
-                            controller: phoneController,
-                            validator: (value){
-                              if(value!.isEmpty)
-                                {
-                                  return "Please enter phone number...";
-                                }
-                              else
-                                {
-                                  return null;
-                                }
-                            },
-                            keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isDense: true,
-                                  labelText: "Phone",
-                                  labelStyle: TextStyle(
-                                    color: theme1
-                                  ),
-                                  hintText: "Enter Phone Number",
-                                  prefixIcon: const Icon(
-                                      Icons.phone
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: theme1,
-                                        width: 2,
-                                      )
-                                  ),
-                                  focusColor: theme1,
-                              ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-
-                          //Date of Birth
-                          TextFormField(
-                            keyboardType: TextInputType.datetime,
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  labelText: "Date of Birth (optional)",
-                                  labelStyle: TextStyle(
-                                    color: theme1
-                                  ),
-                                  hintText: "Enter Date of Birth",
-                                  prefixIcon: const Icon(
-                                      Icons.date_range
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: theme1,
-                                        width: 2,
-                                      )
-                                  ),
-                              ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          //Website
-                          TextFormField(
-                            keyboardType: TextInputType.url,
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  labelText: "Website (optional)",
-                                  labelStyle: TextStyle(
-                                    color: theme1
-                                  ),
-                                  hintText: "Enter Website",
-                                  prefixIcon: Image.asset("assets/icons/website.png",
-                                    scale: 2.5,
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: theme1,
-                                        width: 2,
-                                      )
-                                  )
-                              )
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          //LinkedIn
-                          TextFormField(
-                            keyboardType: TextInputType.name,
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  labelText: "LinkedIn (optional)",
-                                  labelStyle: TextStyle(
-                                    color: theme1,
-                                  ),
-                                  hintText: "Enter Linkedin",
-                                  prefixIcon: Image.asset("assets/icons/linkdeIn.png",
-                                  scale: 2.5,
-                                  ),
-                                  prefixIconColor: theme1,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: theme1,
-                                        width: 2,
-                                      )
-                                  ),
-                              )
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              ElevatedButton.icon(
-                                  onPressed: () {
-                                    setState(() {
-                                      nameController.clear();
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme1,
-                                    foregroundColor: theme2,
-                                  ),
-                                  icon: const Icon(Icons.clear),
-                                  label: const Text("Clear")
-                              ),
-                              ElevatedButton.icon(
-                                  onPressed: () {
-                                    bool validated = formKey.currentState!.validate();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: theme1,
-                                    foregroundColor: theme2,
-                                  ),
-                                  icon: const Icon(Icons.done),
-                                  label: const Text("Submit")
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
+        backgroundColor: Colors.grey.shade200,
       ),
-      backgroundColor: Colors.grey.shade200,
     );
   }
 }
