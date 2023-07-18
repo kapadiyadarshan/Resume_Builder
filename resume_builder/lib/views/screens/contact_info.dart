@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../Global/global_class.dart';
 
@@ -123,6 +124,7 @@ class _ContactInfoState extends State<ContactInfo> {
               IndexedStack(
                 index: currentIndex,
                 children: [
+                  //Contact Page
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
@@ -208,6 +210,7 @@ class _ContactInfoState extends State<ContactInfo> {
                               },
                                 keyboardType: TextInputType.streetAddress,
                                 textInputAction: TextInputAction.next,
+                                initialValue: Global.address,
                                 decoration: InputDecoration(
                                   isDense: true,
                                     labelText: "Address",
@@ -259,6 +262,7 @@ class _ContactInfoState extends State<ContactInfo> {
                               },
                                 keyboardType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
+                                initialValue: Global.email,
                                 decoration: InputDecoration(
                                   isDense: true,
                                     labelText: "Email",
@@ -314,6 +318,7 @@ class _ContactInfoState extends State<ContactInfo> {
                               },
                               keyboardType: TextInputType.phone,
                               textInputAction: TextInputAction.next,
+                              // initialValue: Global.phone,
                                 decoration: InputDecoration(
                                   isDense: true,
                                     labelText: "Phone",
@@ -348,63 +353,64 @@ class _ContactInfoState extends State<ContactInfo> {
                             ),
 
                             //Date of Birth
-                            TextFormField(
-                              controller: date,
-                              // keyboardType: TextInputType.datetime,
-                              textInputAction: TextInputAction.next,
-                                decoration: InputDecoration(
-                                    isDense: true,
-                                    labelText: "Date of Birth (optional)",
-                                    labelStyle: TextStyle(
-                                      color: theme1
-                                    ),
-                                    // label: Text("${Global.DOB}"),
-                                    hintText: "Enter Date of Birth",
-                                    prefixIcon: const Icon(
-                                        Icons.date_range
-                                    ),
-                                    prefixIconColor: theme1,
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10)
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(
-                                          color: theme1,
-                                          width: 2,
-                                        )
-                                    ),
-                                ),
-                              onTap: () async {
-                                setState(() async {
-                                  DateTime? pickDate = await showDatePicker(
-                                      context: context,
-                                      initialDate: DateTime.now(),
-                                      firstDate: DateTime(1947),
-                                      lastDate: DateTime.now(),
-                                  ).then((value){
-                                    setState(() {
-                                      Global.DOB = "${value?.day}-${value?.month}-${value?.year}".toString();
-                                      date.text = "${value?.day}-${value?.month}-${value?.year}".toString();
-                                    });
-                                  });
-                                });
-                              },
-                              onChanged: (value) {
-                                setState(() {
-                                  Global.DOB = value;
-                                  debugPrint(Global.DOB);
-                                });
-                              },
-                            ),
-                            const SizedBox(
-                              height: 12,
-                            ),
+                            // TextFormField(
+                            //   controller: date,
+                            //   // keyboardType: TextInputType.datetime,
+                            //   textInputAction: TextInputAction.next,
+                            //     decoration: InputDecoration(
+                            //         isDense: true,
+                            //         labelText: "Date of Birth (optional)",
+                            //         labelStyle: TextStyle(
+                            //           color: theme1
+                            //         ),
+                            //         // label: Text("${Global.DOB}"),
+                            //         hintText: "Enter Date of Birth",
+                            //         prefixIcon: const Icon(
+                            //             Icons.date_range
+                            //         ),
+                            //         prefixIconColor: theme1,
+                            //         border: OutlineInputBorder(
+                            //             borderRadius: BorderRadius.circular(10)
+                            //         ),
+                            //         focusedBorder: OutlineInputBorder(
+                            //           borderRadius: BorderRadius.circular(10),
+                            //             borderSide: BorderSide(
+                            //               color: theme1,
+                            //               width: 2,
+                            //             )
+                            //         ),
+                            //     ),
+                            //   onTap: () async {
+                            //     setState(() async {
+                            //       DateTime? pickDate = await showDatePicker(
+                            //           context: context,
+                            //           initialDate: DateTime.now(),
+                            //           firstDate: DateTime(1947),
+                            //           lastDate: DateTime.now(),
+                            //       ).then((value){
+                            //         setState(() {
+                            //           Global.DOB = "${value?.day}-${value?.month}-${value?.year}".toString();
+                            //           date.text = "${value?.day}-${value?.month}-${value?.year}".toString();
+                            //         });
+                            //       });
+                            //     });
+                            //   },
+                            //   onChanged: (value) {
+                            //     setState(() {
+                            //       Global.DOB = value;
+                            //       debugPrint(Global.DOB);
+                            //     });
+                            //   },
+                            // ),
+                            // const SizedBox(
+                            //   height: 12,
+                            // ),
 
                             //Website
                             TextFormField(
                                 keyboardType: TextInputType.url,
                                 textInputAction: TextInputAction.next,
+                                initialValue: Global.website,
                                 decoration: InputDecoration(
                                     isDense: true,
                                     labelText: "Website (optional)",
@@ -441,6 +447,7 @@ class _ContactInfoState extends State<ContactInfo> {
                             TextFormField(
                                 keyboardType: TextInputType.name,
                                 textInputAction: TextInputAction.done,
+                                initialValue: Global.linkedIn,
                                 decoration: InputDecoration(
                                     isDense: true,
                                     labelText: "LinkedIn (optional)",
@@ -552,6 +559,82 @@ class _ContactInfoState extends State<ContactInfo> {
                       ),
                     ),
                   ),
+
+                  //Image Page
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(40),
+                    decoration: BoxDecoration(
+                        color: theme2,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              offset: Offset(5, 5)
+                          )
+                        ]
+                    ),
+                    alignment: Alignment.center,
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        CircleAvatar(
+                          radius: 80,
+                          backgroundColor: Colors.grey.shade200,
+                          child: Text("Add Image",
+                          style: TextStyle(
+                            color: theme1
+                          ),),
+                        ),
+                        FloatingActionButton.small(
+                            onPressed: () {
+                              ImagePicker pickImg = ImagePicker();
+                              XFile? file;
+                              
+                              showDialog(
+                                context: context,
+                                builder: (context) =>  AlertDialog(
+                                  title: const Text("Pick Image"),
+                                  content: const Text("Choose the source for your image"),
+                                  actionsAlignment: MainAxisAlignment.center,
+                                  actions: [
+                                    ElevatedButton.icon(
+                                        onPressed: () async {
+                                          file = await pickImg.pickImage(source: ImageSource.camera);
+
+                                          Navigator.of(context).pop();
+                                      },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: theme1,
+                                          foregroundColor: theme2,
+                                        ),
+                                        icon: const Icon(Icons.camera_alt),
+                                        label: const Text("Camera")
+                                    ),
+                                    ElevatedButton.icon(
+                                        onPressed: () async{
+                                          file = await pickImg.pickImage(source: ImageSource.gallery);
+                                          
+                                          Navigator.of(context).pop();
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: theme1,
+                                          foregroundColor: theme2,
+                                        ),
+                                        icon: const Icon(Icons.image),
+                                        label: const Text("Gallary")
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          backgroundColor: theme1,
+                          child: const Icon(Icons.add),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               )
             ],
