@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
 class Achivements extends StatefulWidget {
@@ -16,7 +17,10 @@ class _AchivementsState extends State<Achivements> {
         title: const Text("Achivements"),
         centerTitle: true,
         leading: const MyBackButton(),
+        backgroundColor: theme1,
+        foregroundColor: theme2,
       ),
+      backgroundColor: Colors.grey.shade200,
     );
   }
 }

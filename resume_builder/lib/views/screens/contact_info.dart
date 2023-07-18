@@ -16,7 +16,6 @@ class _ContactInfoState extends State<ContactInfo> {
   int currentIndex = 0;
 
   TextEditingController date = TextEditingController();
-  TextEditingController name = TextEditingController();
 
   RegExp emailRx = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
 
@@ -147,7 +146,6 @@ class _ContactInfoState extends State<ContactInfo> {
                           children: [
                             //Name
                             TextFormField(
-                              controller: name,
                               validator: (value){
                                 if(value!.isEmpty)
                                   {
@@ -160,10 +158,9 @@ class _ContactInfoState extends State<ContactInfo> {
                               },
                               showCursor: true,
                               cursorColor: theme1,
-                              // maxLines: 7,
-                              // minLines: 2,
                               keyboardType: TextInputType.name,
                               textInputAction: TextInputAction.next,
+                              initialValue: Global.name,
                               decoration: InputDecoration(
                                 isDense: true,
                                 labelText: "Name",
@@ -183,7 +180,7 @@ class _ContactInfoState extends State<ContactInfo> {
                                     borderSide: BorderSide(
                                       color: theme1,
                                       width: 2,
-                                    )
+                                    ),
                                 ),
                               ),
                               onChanged: (value) {
@@ -482,7 +479,15 @@ class _ContactInfoState extends State<ContactInfo> {
                                 ElevatedButton.icon(
                                     onPressed: () {
                                       setState(() {
+                                        formKey.currentState!.reset();
 
+                                        Global.name = null;
+                                        Global.address = null;
+                                        Global.email = null;
+                                        Global.phone = null;
+                                        Global.DOB = null;
+                                        Global.website = null;
+                                        Global.linkedIn = null;
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -497,6 +502,41 @@ class _ContactInfoState extends State<ContactInfo> {
                                 ElevatedButton.icon(
                                     onPressed: () {
                                       bool validated = formKey.currentState!.validate();
+
+                                      setState(() {
+                                        if(validated)
+                                        {
+                                          formKey.currentState!.save();
+
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: const Text("Successfully Validated !!"),
+                                              backgroundColor: theme1,
+                                              behavior: SnackBarBehavior.floating,
+                                              duration: const Duration(seconds: 3),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10)
+                                              ),
+                                              dismissDirection: DismissDirection.horizontal,
+                                            )
+                                          );
+                                        }
+                                        else
+                                          {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(
+                                                  content: const Text("Failed to Validated !!"),
+                                                  backgroundColor: Colors.red,
+                                                  behavior: SnackBarBehavior.floating,
+                                                  duration: const Duration(seconds: 3),
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(10)
+                                                  ),
+                                                  dismissDirection: DismissDirection.horizontal,
+                                                )
+                                            );
+                                          }
+                                      });
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: theme1,
@@ -507,7 +547,6 @@ class _ContactInfoState extends State<ContactInfo> {
                                 ),
                               ],
                             ),
-                            Text("${Global.DOB}")
                           ],
                         ),
                       ),
