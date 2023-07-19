@@ -21,12 +21,12 @@ class _ReferencesState extends State<References> {
         foregroundColor: theme2,
       ),
       body: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: theme2,
                 borderRadius: BorderRadius.circular(10),

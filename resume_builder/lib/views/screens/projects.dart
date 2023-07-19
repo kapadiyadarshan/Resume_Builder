@@ -10,6 +10,9 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,104 +34,154 @@ class _ProjectsState extends State<Projects> {
                 color: theme2,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //Project title
-                  Text(
-                    "Project Title",
-                    style: TextStyle(
-                        color: theme1,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
+              child: Form(
+                key: formKey,
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //Project title
+                    Text(
+                      "Project Title",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    maxLines: 1,
-                    cursorColor: theme1,
-                    decoration: InputDecoration(
-                        isDense: true,
-                        hintText: "Resume Builder App",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        focusedBorder: OutlineInputBorder(
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "Resume Builder App",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: theme1,
+                                width: 2,
+                              )
+                          )
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+
+                    //Roles
+                    Text(
+                      "Roles",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "Organize Team Members, Code Analysis",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(
                               color: theme1,
                               width: 2,
-                            )
-                        )
+                            ),
+                          )
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Text(
-                    "Designation",
-                    style: TextStyle(
-                        color: theme1,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
+                    const SizedBox(
+                      height: 12,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    maxLines: 1,
-                    cursorColor: theme1,
-                    decoration: InputDecoration(
-                        isDense: true,
-                        hintText: "Full Stack Developer",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: theme1,
-                            width: 2,
+
+                    //Technologies
+                    Text(
+                      "Technologies",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "5 - Programmers",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
                           ),
-                        )
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                              color: theme1,
+                              width: 2,
+                            ),
+                          )
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  Text(
-                    "Organization/Institute",
-                    style: TextStyle(
-                        color: theme1,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold
+                    const SizedBox(
+                      height: 12,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  TextFormField(
-                    maxLines: 1,
-                    cursorColor: theme1,
-                    decoration: InputDecoration(
-                        isDense: true,
-                        hintText: "Red & White Multimedia Education",
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: theme1,
-                            width: 2,
+
+                    //Project Description
+                    Text(
+                      "Project Description",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      maxLines: 3,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "Enter Your Project Description",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
                           ),
-                        )
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                              color: theme1,
+                              width: 2,
+                            ),
+                          )
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],

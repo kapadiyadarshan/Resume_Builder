@@ -18,8 +18,6 @@ class _ContactInfoState extends State<ContactInfo> {
 
   int currentIndex = 0;
 
-  TextEditingController date = TextEditingController();
-
   RegExp emailRx = RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -552,7 +550,7 @@ class _ContactInfoState extends State<ContactInfo> {
                                       foregroundColor: theme2,
                                     ),
                                     icon: const Icon(Icons.done),
-                                    label: const Text("Submit")
+                                    label: const Text("Save")
                                 ),
                               ],
                             ),
@@ -584,7 +582,7 @@ class _ContactInfoState extends State<ContactInfo> {
                         CircleAvatar(
                           radius: 80,
                           backgroundColor: Colors.grey.shade200,
-                          // foregroundImage: (Global.image != null) ? FileImage() : null,
+                          foregroundImage: (Global.image != null) ? FileImage(Global.image!) : null,
                           child: Text("Add Image",
                           style: TextStyle(
                             color: theme1

@@ -14,4 +14,7 @@ class Global
 
   static String? careerObjective;
   static String? currentDesignation;
+
+  static String? maritualStatus;
+  static List Languages = [];
 }
