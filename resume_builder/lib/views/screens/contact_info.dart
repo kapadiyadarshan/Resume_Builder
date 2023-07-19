@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
@@ -582,6 +584,7 @@ class _ContactInfoState extends State<ContactInfo> {
                         CircleAvatar(
                           radius: 80,
                           backgroundColor: Colors.grey.shade200,
+                          // foregroundImage: (Global.image != null) ? FileImage() : null,
                           child: Text("Add Image",
                           style: TextStyle(
                             color: theme1
@@ -603,6 +606,13 @@ class _ContactInfoState extends State<ContactInfo> {
                                         onPressed: () async {
                                           file = await pickImg.pickImage(source: ImageSource.camera);
 
+                                          if(file != null)
+                                            {
+                                              setState(() {
+                                                Global.image = File(file!.path);
+                                              });
+                                            }
+
                                           Navigator.of(context).pop();
                                       },
                                         style: ElevatedButton.styleFrom(
@@ -615,7 +625,14 @@ class _ContactInfoState extends State<ContactInfo> {
                                     ElevatedButton.icon(
                                         onPressed: () async{
                                           file = await pickImg.pickImage(source: ImageSource.gallery);
-                                          
+
+                                          if(file != null)
+                                          {
+                                            setState(() {
+                                              Global.image = File(file!.path);
+                                            });
+                                          }
+
                                           Navigator.of(context).pop();
                                         },
                                         style: ElevatedButton.styleFrom(

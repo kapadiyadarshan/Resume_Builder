@@ -20,6 +20,55 @@ class _ExperienceState extends State<Experience> {
         backgroundColor: theme1,
         foregroundColor: theme2,
       ),
+      body: Padding(
+        padding: EdgeInsets.all(12),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: theme2,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Company Name",
+                    style: TextStyle(
+                        color: theme1,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  TextFormField(
+                    maxLines: 1,
+                    cursorColor: theme1,
+                    decoration: InputDecoration(
+                        isDense: true,
+                        hintText: "Grow Solution pvt. ltd.",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                              color: theme1,
+                              width: 2,
+                            )
+                        )
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       backgroundColor: Colors.grey.shade200,
     );
   }

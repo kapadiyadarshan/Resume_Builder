@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Global
 {
   static String? name;
@@ -7,4 +9,9 @@ class Global
   static String? DOB;
   static String? website;
   static String? linkedIn;
+
+  static File? image;
+
+  static String? careerObjective;
+  static String? currentDesignation;
 }

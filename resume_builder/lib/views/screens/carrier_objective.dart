@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
+import '../../Global/global_class.dart';
+
 class CarrierObjective extends StatefulWidget {
   const CarrierObjective({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Carrier Objective"),
+        title: const Text("Career Objective"),
         centerTitle: true,
         leading: const MyBackButton(),
         backgroundColor: theme1,
@@ -46,6 +48,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                     height: 12,
                   ),
                   TextFormField(
+                    initialValue: Global.careerObjective,
                     maxLines: 7,
                     cursorColor: theme1,
                     decoration: InputDecoration(
@@ -61,6 +64,11 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                         )
                       )
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        Global.careerObjective = value;
+                      });
+                    },
                   )
                 ],
               ),
@@ -90,6 +98,7 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                     height: 12,
                   ),
                   TextFormField(
+                    initialValue: Global.currentDesignation,
                     maxLines: 3,
                     cursorColor: theme1,
                     decoration: InputDecoration(
@@ -105,6 +114,11 @@ class _CarrierObjectiveState extends State<CarrierObjective> {
                             ),
                         )
                     ),
+                    onChanged: (value) {
+                      setState(() {
+                        Global.currentDesignation = value;
+                      });
+                    },
                   )
                 ],
               ),
