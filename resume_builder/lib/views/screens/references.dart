@@ -137,7 +137,7 @@ class _ReferencesState extends State<References> {
                             color: theme1,
                             width: 2,
                           ),
-                        )
+                        ),
                     ),
                   ),
                 ],
