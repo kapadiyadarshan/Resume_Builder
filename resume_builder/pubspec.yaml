@@ -39,6 +39,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   image_picker: ^1.0.1
   intl: ^0.18.1
+  pdf: ^3.10.4
+  printing: ^5.11.0
 
 dev_dependencies:
   flutter_test:

@@ -318,7 +318,7 @@ class _ContactInfoState extends State<ContactInfo> {
                               },
                               keyboardType: TextInputType.phone,
                               textInputAction: TextInputAction.next,
-                              initialValue: Global.phone.toString(),
+                              initialValue: Global.phone,
                                 decoration: InputDecoration(
                                   isDense: true,
                                     labelText: "Phone",
@@ -344,7 +344,7 @@ class _ContactInfoState extends State<ContactInfo> {
                                 ),
                               onChanged: (value) {
                                 setState(() {
-                                  Global.phone = int.parse(value);
+                                  Global.phone = value;
                                 });
                               },
                             ),

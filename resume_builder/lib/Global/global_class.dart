@@ -8,8 +8,7 @@ class Global
   static String? name;
   static String? address;
   static String? email;
-  static int? phone;
-  static String? DOB;
+  static String? phone;
   static String? website;
   static String? linkedIn;
 
@@ -18,8 +17,10 @@ class Global
   static String? careerObjective;
   static String? currentDesignation;
 
+  static String? DOB;
   static String? maritualStatus;
   static List Languages = [];
+  static String? nationality;
 
   static List course = [];
   static List<TextEditingController> courseController = [];

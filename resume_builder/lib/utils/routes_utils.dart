@@ -2,6 +2,7 @@ class MyRoutes {
   static String HomePage = "/";
   static String ResumeWorkSpace = "resume_workspace";
   static String SplashScreen = "splash_screen";
+  static String PDFpage = "PDFpage";
 
   static String IconPath = "assets/icons/";
 

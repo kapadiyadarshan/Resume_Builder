@@ -9,6 +9,7 @@ import 'package:resume_builder/views/screens/education.dart';
 import 'package:resume_builder/views/screens/experiences.dart';
 import 'package:resume_builder/views/screens/homePage.dart';
 import 'package:resume_builder/views/screens/interest_hobbies.dart';
+import 'package:resume_builder/views/screens/pdfPage.dart';
 import 'package:resume_builder/views/screens/personal_details.dart';
 import 'package:resume_builder/views/screens/projects.dart';
 import 'package:resume_builder/views/screens/references.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.HomePage : (context) => const HomePage(),
         MyRoutes.SplashScreen : (context) => const SplashScreen(),
         MyRoutes.ResumeWorkSpace : (context) => const ResumeWorkSpace(),
+        MyRoutes.PDFpage : (context) => const PDFpage(),
         MyRoutes.BuildOptions[0]["name"] : (context) => const ContactInfo(),
         MyRoutes.BuildOptions[1]["name"] : (context) => const CarrierObjective(),
         MyRoutes.BuildOptions[2]["name"] : (context) => const PersonalDetails(),

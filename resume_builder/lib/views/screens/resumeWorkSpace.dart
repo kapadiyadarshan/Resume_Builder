@@ -18,6 +18,19 @@ class _ResumeWorkSpaceState extends State<ResumeWorkSpace> {
         title: const Text("Resume Workspace"),
         centerTitle: true,
         leading: const MyBackButton(),
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).pushNamed(MyRoutes.PDFpage);
+                });
+              },
+              icon: const Icon(Icons.picture_as_pdf)
+          ),
+          const SizedBox(
+            width: 6,
+          ),
+        ],
         backgroundColor: theme1,
         foregroundColor: theme2,
       ),

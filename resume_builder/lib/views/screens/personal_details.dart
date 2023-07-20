@@ -82,6 +82,11 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                               )
                           )
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.DOB = value;
+                        });
+                      },
                     ),
                     const SizedBox(
                       height: 12,
@@ -193,6 +198,11 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                               )
                           )
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.nationality = value;
+                        });
+                      },
                     ),
                   ],
                 ),
