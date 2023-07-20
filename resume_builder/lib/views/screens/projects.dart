@@ -33,6 +33,13 @@ class _ProjectsState extends State<Projects> {
               decoration: BoxDecoration(
                 color: theme2,
                 borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                        blurRadius: 10,
+                        color: Colors.grey,
+                        offset: Offset(5, 5)
+                    ),
+                  ]
               ),
               child: Form(
                 key: formKey,

@@ -1,4 +1,7 @@
+import 'dart:core';
 import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 
 class Global
 {
@@ -17,4 +20,12 @@ class Global
 
   static String? maritualStatus;
   static List Languages = [];
+
+  static List<TextEditingController> course = [];
+  static List<TextEditingController> school = [];
+  static List<TextEditingController> grade = [];
+  static List<TextEditingController> year = [];
+
+  static List skills = [];
+  static List<TextEditingController> skillController = [];
 }

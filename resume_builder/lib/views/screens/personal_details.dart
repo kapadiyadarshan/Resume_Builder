@@ -31,15 +31,22 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         ),
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Column(
             children: [
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: theme2,
                   borderRadius: BorderRadius.circular(10),
+                    boxShadow: const [
+                      BoxShadow(
+                          blurRadius: 10,
+                          color: Colors.grey,
+                          offset: Offset(5, 5)
+                      ),
+                    ]
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +139,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     ),
                     ...languages.map((e) => CheckboxListTile(
                         title: Text(e,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18
                         ),),
                         activeColor: theme1,
@@ -148,7 +155,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                               {
                                 Global.Languages.add(e);
                               }
-                            print(Global.Languages);
                           });
                         },
                     )

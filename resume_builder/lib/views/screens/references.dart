@@ -30,6 +30,13 @@ class _ReferencesState extends State<References> {
               decoration: BoxDecoration(
                 color: theme2,
                 borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                        blurRadius: 10,
+                        color: Colors.grey,
+                        offset: Offset(5, 5)
+                    ),
+                  ]
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,6 +55,8 @@ class _ReferencesState extends State<References> {
                   TextFormField(
                     maxLines: 1,
                     cursorColor: theme1,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       isDense: true,
                         hintText: "Narendrabhai Modi",
@@ -80,6 +89,8 @@ class _ReferencesState extends State<References> {
                   TextFormField(
                     maxLines: 1,
                     cursorColor: theme1,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         isDense: true,
                         hintText: "Full Stack Developer",
@@ -112,6 +123,8 @@ class _ReferencesState extends State<References> {
                   TextFormField(
                     maxLines: 1,
                     cursorColor: theme1,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
                     decoration: InputDecoration(
                         isDense: true,
                         hintText: "Red & White Multimedia Education",
