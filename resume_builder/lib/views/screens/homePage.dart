@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Home Page"),
         centerTitle: true,
         backgroundColor: theme1,
+        foregroundColor: theme2,
       ),
       body: Center(
         child: Column(
@@ -48,13 +49,17 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.of(context).pushNamed(MyRoutes.ResumeWorkSpace);
         },
+        shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30)
+        ),
         backgroundColor: theme1,
+        foregroundColor: theme2,
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Container(
-          height: 50,
+          height: 10,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
+import '../../Global/global_class.dart';
+
 class References extends StatefulWidget {
   const References({Key? key}) : super(key: key);
 
@@ -58,6 +60,7 @@ class _ReferencesState extends State<References> {
                       height: 12,
                     ),
                     TextFormField(
+                      initialValue: Global.ref_name,
                       maxLines: 1,
                       cursorColor: theme1,
                       keyboardType: TextInputType.text,
@@ -76,6 +79,11 @@ class _ReferencesState extends State<References> {
                               )
                           )
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.ref_name = value;
+                        });
+                      },
                     ),
                     const SizedBox(
                       height: 12,
@@ -92,6 +100,7 @@ class _ReferencesState extends State<References> {
                       height: 12,
                     ),
                     TextFormField(
+                      initialValue: Global.ref_designation,
                       maxLines: 1,
                       cursorColor: theme1,
                       keyboardType: TextInputType.text,
@@ -110,6 +119,11 @@ class _ReferencesState extends State<References> {
                             ),
                           )
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.ref_designation = value;
+                        });
+                      },
                     ),
                     const SizedBox(
                       height: 12,
@@ -126,6 +140,7 @@ class _ReferencesState extends State<References> {
                       height: 12,
                     ),
                     TextFormField(
+                      initialValue: Global.ref_organization,
                       maxLines: 1,
                       cursorColor: theme1,
                       keyboardType: TextInputType.text,
@@ -144,6 +159,11 @@ class _ReferencesState extends State<References> {
                             ),
                           ),
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.ref_organization = value;
+                        });
+                      },
                     ),
                   ],
                 ),

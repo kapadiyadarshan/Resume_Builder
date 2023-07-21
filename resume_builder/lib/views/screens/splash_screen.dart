@@ -43,17 +43,23 @@ class _SplashScreenState extends State<SplashScreen> {
             Image.asset("assets/images/Resume (1).gif",
             scale: 1.3,
             ),
-            TextLiquidFill(
-              loadDuration: const Duration(seconds: 2),
-              text: 'Resume Builder',
-              waveColor: theme1,
-              boxBackgroundColor: theme2,
-              textStyle: const TextStyle(
-                fontSize: 44.0,
-                fontWeight: FontWeight.bold,
-              ),
-              boxHeight: 90.0,
-            ),
+            // TextLiquidFill(
+            //   loadDuration: const Duration(seconds: 2),
+            //   text: 'Resume Builder',
+            //   waveColor: theme2,
+            //   boxBackgroundColor: theme1,
+            //   textStyle: const TextStyle(
+            //     fontSize: 44.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            //   boxHeight: 40.0,
+            // ),
+            Text("Resume Builder",
+              style: TextStyle(
+              color: theme1,
+              fontSize: 44,
+                fontWeight: FontWeight.bold
+            ),),
             const SizedBox(
               height: 36,
             ),

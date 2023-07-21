@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
+import '../../Global/global_class.dart';
+
 class Projects extends StatefulWidget {
   const Projects({Key? key}) : super(key: key);
 
@@ -29,7 +31,7 @@ class _ProjectsState extends State<Projects> {
         ),
         resizeToAvoidBottomInset: false,
         body: Padding(
-          padding: EdgeInsets.all(12),
+          padding: const EdgeInsets.all(12),
           child: Column(
             children: [
               Container(
@@ -65,6 +67,7 @@ class _ProjectsState extends State<Projects> {
                         height: 12,
                       ),
                       TextFormField(
+                        initialValue: Global.projectTitle,
                         maxLines: 1,
                         cursorColor: theme1,
                         keyboardType: TextInputType.text,
@@ -83,6 +86,11 @@ class _ProjectsState extends State<Projects> {
                                 )
                             )
                         ),
+                        onChanged: (value) {
+                          setState(() {
+                            Global.projectTitle = value;
+                          });
+                        },
                       ),
                       const SizedBox(
                         height: 12,
@@ -101,6 +109,7 @@ class _ProjectsState extends State<Projects> {
                         height: 12,
                       ),
                       TextFormField(
+                        initialValue: Global.pro_roles,
                         maxLines: 1,
                         cursorColor: theme1,
                         keyboardType: TextInputType.text,
@@ -119,6 +128,11 @@ class _ProjectsState extends State<Projects> {
                               ),
                             )
                         ),
+                        onChanged: (value) {
+                          setState(() {
+                            Global.pro_roles = value;
+                          });
+                        },
                       ),
                       const SizedBox(
                         height: 12,
@@ -137,6 +151,7 @@ class _ProjectsState extends State<Projects> {
                         height: 12,
                       ),
                       TextFormField(
+                        initialValue: Global.technologies,
                         maxLines: 1,
                         cursorColor: theme1,
                         keyboardType: TextInputType.text,
@@ -155,6 +170,11 @@ class _ProjectsState extends State<Projects> {
                               ),
                             )
                         ),
+                        onChanged: (value) {
+                          setState(() {
+                            Global.technologies = value;
+                          });
+                        },
                       ),
                       const SizedBox(
                         height: 12,
@@ -173,6 +193,7 @@ class _ProjectsState extends State<Projects> {
                         height: 12,
                       ),
                       TextFormField(
+                        initialValue: Global.pro_description,
                         maxLines: 3,
                         cursorColor: theme1,
                         keyboardType: TextInputType.text,
@@ -191,6 +212,11 @@ class _ProjectsState extends State<Projects> {
                               ),
                             )
                         ),
+                        onChanged: (value) {
+                          setState(() {
+                            Global.pro_description = value;
+                          });
+                        },
                       ),
                     ],
                   ),

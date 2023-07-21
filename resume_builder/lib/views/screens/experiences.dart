@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_builder/utils/colors_utils.dart';
 import 'package:resume_builder/views/components/myBackButton.dart';
 
+import '../../Global/global_class.dart';
+
 class Experience extends StatefulWidget {
   const Experience({Key? key}) : super(key: key);
 
@@ -51,11 +53,14 @@ class _ExperienceState extends State<Experience> {
                       height: 12,
                     ),
                     TextFormField(
+                      initialValue: Global.companyName,
                       maxLines: 1,
                       cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
                           isDense: true,
-                          hintText: "Grow Solution pvt. ltd.",
+                          hintText: "Enter Your Company Name",
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10)
                           ),
@@ -67,6 +72,131 @@ class _ExperienceState extends State<Experience> {
                               )
                           )
                       ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.companyName = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      "Roles",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      initialValue: Global.roles,
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "Enter Your Role",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: theme1,
+                                width: 2,
+                              )
+                          )
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.roles = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      "Joined Date",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      initialValue: Global.joinedDate,
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.datetime,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "DD/MM/YYYY",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: theme1,
+                                width: 2,
+                              )
+                          )
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.joinedDate = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      "Exit Date",
+                      style: TextStyle(
+                          color: theme1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    TextFormField(
+                      initialValue: Global.exitDate,
+                      maxLines: 1,
+                      cursorColor: theme1,
+                      keyboardType: TextInputType.datetime,
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                          isDense: true,
+                          hintText: "DD/MM/YYYY",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide(
+                                color: theme1,
+                                width: 2,
+                              )
+                          )
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          Global.exitDate = value;
+                        });
+                      },
                     ),
                   ],
                 ),

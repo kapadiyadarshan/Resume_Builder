@@ -31,12 +31,26 @@ class Global
   static List year = [];
   static List<TextEditingController> yearController = [];
 
+  static String? companyName;
+  static String? roles;
+  static String? joinedDate;
+  static String? exitDate;
+
   static List skills = [];
   static List<TextEditingController> skillController = [];
 
   static List interest = [];
   static List<TextEditingController> interestController = [];
 
+  static String? projectTitle;
+  static String? pro_roles;
+  static String? technologies;
+  static String? pro_description;
+
   static List achivement = [];
   static List<TextEditingController> achivementController = [];
+
+  static String? ref_name;
+  static String? ref_designation;
+  static String? ref_organization;
 }

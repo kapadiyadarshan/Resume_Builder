@@ -64,6 +64,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     ),
                     //Date of Birth
                     TextFormField(
+                      initialValue: Global.DOB,
                       maxLines: 1,
                       cursorColor: theme1,
                       keyboardType: TextInputType.datetime,
@@ -180,6 +181,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                     ),
                     //Nationality
                     TextFormField(
+                      initialValue: Global.nationality,
                       maxLines: 1,
                       cursorColor: theme1,
                       keyboardType: TextInputType.text,
