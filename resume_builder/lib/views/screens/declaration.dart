@@ -68,7 +68,8 @@ class _DeclarationState extends State<Declaration> {
                               switchValue = value;
                             }
                           );
-                        },)
+                        },
+                        ),
                       ],
                     ),
                     Visibility(

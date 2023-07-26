@@ -289,7 +289,7 @@ class _PDFpageState extends State<PDFpage> {
                                 ),
                                 pw.Container(
                                     width: double.infinity,
-                                    padding: pw.EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+                                    padding: const pw.EdgeInsets.symmetric(vertical: 10, horizontal: 6),
 
                                     decoration: pw.BoxDecoration(
                                         color: pdf2,
@@ -297,7 +297,7 @@ class _PDFpageState extends State<PDFpage> {
                                           pw.BoxShadow(
                                               color: pdf1,
                                               blurRadius: 10,
-                                              offset: PdfPoint(2, 2)
+                                              offset: const PdfPoint(2, 2)
                                           )
                                         ]
                                     ),
